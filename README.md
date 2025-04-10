@@ -1,5 +1,5 @@
-# Secure-Data-Encryption-System
-Projecte_5_Secure Data Encryption System
+                                                                                             " Projecte_5_Secure Data Encryption System"
+🔐 Secure-Data-Encryption-System
 Streamlit Link! 
 https://secure-data-encryption-system-sut5grqjjlgwsgflh3ph8g.streamlit.app
 
