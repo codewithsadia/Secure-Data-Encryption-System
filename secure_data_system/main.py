@@ -71,7 +71,8 @@ def change_page(page):
 # Streamlit UI
 st.title("🔒 Secure Data Encryption System")
 
-# Navigation menu
+
+# Navigation
 menu = ["Home", "Store Data", "Retrieve Data", "Login"]
 choice = st.sidebar.selectbox("Navigation", menu, index=menu.index(st.session_state.current_page))
 
