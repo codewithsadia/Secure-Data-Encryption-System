@@ -2,7 +2,7 @@ import streamlit as st
 import hashlib
 import json
 import time
-from cryptography.fernet import Fernet # type: ignore
+from cryptography.fernet import Fernet
 import base64
 
 # Initialize session state variables if they don't exist
@@ -57,8 +57,8 @@ def decrypt_data(encrypted_text, passkey, data_id):
 
 # Function to generate a unique ID for data
 def generate_data_id():
-    import uuid  #  uuid mean uniqe id 
-    return str(uuid.uuid4()) 
+    import uuid
+    return str(uuid.uuid4())
 
 # Function to reset failed attempts
 def reset_failed_attempts():
@@ -71,7 +71,6 @@ def change_page(page):
 # Streamlit UI
 st.title("🔒 Secure Data Encryption System")
 
-
 # Navigation
 menu = ["Home", "Store Data", "Retrieve Data", "Login"]
 choice = st.sidebar.selectbox("Navigation", menu, index=menu.index(st.session_state.current_page))
@@ -79,7 +78,7 @@ choice = st.sidebar.selectbox("Navigation", menu, index=menu.index(st.session_st
 # Update current page based on selection
 st.session_state.current_page = choice
 
-# Check if too many failed attempts (3)
+# Check if too many failed attempts
 if st.session_state.failed_attempts >= 3:
     # Force redirect to login page
     st.session_state.current_page = "Login"
@@ -92,10 +91,10 @@ if st.session_state.current_page == "Home":
     
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("📂Store New Data", use_container_width=True):
-            change_page("📂Store Data")
+        if st.button("Store New Data", use_container_width=True):
+            change_page("Store Data")
     with col2:
-        if st.button("🔍Retrieve Data", use_container_width=True):
+        if st.button("Retrieve Data", use_container_width=True):
             change_page("Retrieve Data")
     
     # Display stored data count
@@ -103,9 +102,9 @@ if st.session_state.current_page == "Home":
 
 elif st.session_state.current_page == "Store Data":
     st.subheader("📂 Store Data Securely")
-    user_data = st.text_area("📋Enter Data:")
-    passkey = st.text_input("🔑Enter Passkey:", type="password")
-    confirm_passkey = st.text_input("🔑Confirm Passkey:", type="password")
+    user_data = st.text_area("Enter Data:")
+    passkey = st.text_input("Enter Passkey:", type="password")
+    confirm_passkey = st.text_input("Confirm Passkey:", type="password")
 
     if st.button("Encrypt & Save"):
         if user_data and passkey and confirm_passkey:
